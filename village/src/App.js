@@ -11,7 +11,6 @@ class App extends Component {
     this.state = {
       smurfs: [],
       error: '',
-    
     };
   }
   // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
@@ -27,16 +26,21 @@ class App extends Component {
         });
       })
       .catch(err => {
-        this.setState({ error: err.statusText });
+        this.setState({ ...this.state, error: err.statusText });
       });
   }
-
 
   render() {
     return (
       <div className="App">
-        <SmurfForm />
-        <Smurfs smurfs={this.state.smurfs} />
+        {this.state.error ? (
+          <h3>{this.state.error}</h3>
+        ) : (
+          <div>
+            <SmurfForm />
+            <Smurfs smurfs={this.state.smurfs} />
+          </div>
+        )}
       </div>
     );
   }
