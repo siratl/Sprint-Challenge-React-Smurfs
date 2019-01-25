@@ -1,3 +1,36 @@
 .App {
   text-align: center;
+
+  background: lightgrey;
+  height: 100%;
+  max-width: 100%;
+  display:flex;
+  justify-content: center;
+  margin-bottom: 50px;
 }
+
+.Smurfs {
+
+  background: white;
+  width: 700px;
+  margin-top: 70px;
+  border-radius: 5px;
+}
+
+.Smurf {
+  width: 70%;
+  margin: 0 auto;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+
+}
+
+.Smurf h3 {
+ padding: 10px 20px 0 20px;
+}
+.Smurf p {
+  padding: 0 20px;
+ }

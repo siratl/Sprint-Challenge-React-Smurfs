@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class SmurfForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       age: '',
-      height: ''
+      height: '',
     };
   }
 
   addSmurf = event => {
     event.preventDefault();
-    // add code to create the smurf using the api
-
+    axios
+      // add code to create the smurf using the api
+      .post('http://localhost:3333/smurfs', this.state)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        this.setState({ error: err.statusText });
+      });
     this.setState({
       name: '',
       age: '',
-      height: ''
+      height: '',
     });
-  }
+  };
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -36,6 +43,7 @@ class SmurfForm extends Component {
             name="name"
           />
           <input
+            type="number"
             onChange={this.handleInputChange}
             placeholder="age"
             value={this.state.age}
